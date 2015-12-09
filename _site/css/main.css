@@ -1,0 +1,89 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    position: relative;
+}
+body:after {
+    content: '';
+    display: block;
+    height: 100px;
+}
+
+hr.book-primary {
+    margin: 25px auto 30px;
+    padding: 0;
+    max-width: 250px;
+    border: 0;
+    border-top: solid 5px;
+    text-align: center;
+}
+
+hr.book-primary:after {
+    content:"\f02d";
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    padding: 0 .25em;
+    font-family: fontawesome;
+    font-size: 2em;
+}
+
+hr.book-primary {
+    border-color: #2c3e50;
+}
+
+hr.book-primary:after {
+    background-color: #fff;
+}
+
+.btn-social {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 45px;
+}
+.btn-outline {
+    margin-top: 15px;
+    border: solid 2px #fff;
+    font-size: 20px;
+    color: #fff;
+    background: 0 0;
+    transition: all .3s ease-in-out;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    border: solid 2px #fff;
+    /*color: #18bc9c;*/
+    color: #222;
+    background: #fff;
+}
+
+footer {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .footer-above {
+    padding-top: 10px;
+    background-color:#222;
+}
+
+footer .footer-below {
+    padding: 15px 0;
+    background-color: #233140;
+}
+
+.book-cover{
+    max-height: 250px;
+}

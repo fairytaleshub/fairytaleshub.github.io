@@ -1,0 +1,58 @@
+p{
+    font-family: DroidSerif, Times, serif;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.panel{
+    margin-top: 2vh;
+}
+
+.panel-body{
+    min-height: 80vh;
+}
+
+.btn-right{
+    right: 0px;
+    left: auto;   
+}
+.cover-image{
+    margin: 0 auto;
+    height: 70vh;
+}
+
+.page-image{
+    margin: 0 auto;
+    height: 50vh;
+}
+
+.carousel-inner,.carousel,.container,.fill {
+  height:100%;
+  width:100%;
+}
+
+.carousel-control-top{
+    top:40vh !important;
+}
+
+.header-center{
+    
+    position: absolute;
+    padding-right: 115px;
+    padding-left: 80px;
+    font-family: DroidSerif, Times, serif;
+    font-size: 16px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+#homeBtn{
+    position:relative;
+}
+
+p:first-letter{
+    float: left;
+    font-size: calc(100% * 2.8);
+    line-height: 100%;
+}

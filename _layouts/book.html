@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  {% include book_head.html %}
+  <body>
+      <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        
+                        <!-- panel header -->
+                        
+                        <div class="panel-heading">   
+                            
+                            <span class="header-center">{{ page.title }}</span>
+                            <button id="homeBtn" type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-arrow-left text-muted" aria-hidden="true"></span>
+                                    <span class="sr-only">Home</span>
+                            </button>
+                            
+                            <div class="btn-group pull-right" role="group" aria-label="text-size">
+                                <button id="fontMinus" type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-minus text-muted" aria-hidden="true"></span>
+                                    <span class="sr-only">Minus</span>
+                                </button>
+                                <button id="fontPlus" type="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-plus text-muted" aria-hidden="true"></span>
+                                    <span class="sr-only">Plus</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- panel body -->
+                        <div class="panel-body">
+                            <div id="book" class="carousel slide" data-interval="false" data-wrap="false">
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                        
+                                    {% assign bookPages = content | split:'<!--page-->' %}
+                                    {% assign counter=0 %}
+                                    
+                                    {% for bookPage in bookPages %}
+                                        {% assign counter=counter | plus:1 %} 
+                                        {% if forloop.first == true %}
+                                            <!--Cover-->
+                                            <div id="0" class="item">
+                                                <div>
+                                                    <div class="text-center">
+                                                        <img src="{{site.baseurl}}{{ page.permalink}}images/{{page.cover }}" class="cover-image"/>
+                                                    </div>
+                                                </div>    
+                                            </div>
+                                        {% endif %}
+                                            <!-- Page -->
+                                            <div id="{{counter}}" class="item">
+                                                <div>
+                                                    <div class="text-center">
+                                                        <img src="{{site.baseurl}}{{ page.permalink}}images/{{page.image}}{{counter}}.jpg" class="page-image"/>
+                                                    </div>
+                                                    <p>
+                                                       {{ bookPage | remove: '<p>' | remove: '</p>'}}
+                                                    </p>
+                                                </div>    
+                                            </div>
+                                        
+
+                                    {% endfor %}
+                                </div>
+                                
+                                <!-- Left and right controls -->
+                                  <a class=" carousel-control" href="#book" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left text-muted carousel-control-top" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control btn-right" href="#book" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right text-muted carousel-control-top" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+      </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $("#homeBtn").click(function () {
+                window.location = "{{site.baseurl}}/";
+                this.blur();
+            });
+            $("#fontPlus").click(function () {
+                var fontSize = parseInt($('p').css("font-size"));
+                fontSize = fontSize + 1 + "px";
+                $('p').css({'font-size':fontSize});
+                this.blur();
+            });
+            $("#fontMinus").click(function () {
+                var fontSize = parseInt($('p').css("font-size"));
+                fontSize = fontSize - 1 + "px";
+                $('p').css({'font-size':fontSize});
+                this.blur();
+            });
+            
+            $('#book').on('slide.bs.carousel', function (event) {
+                if(typeof(Storage) !== "undefined") {
+                    localStorage.setItem("{{ page.prefix }}", event.relatedTarget.id);
+                }
+            })
+            
+            if (localStorage.{{ page.prefix }}) {
+                $('#'+localStorage.getItem("{{ page.prefix }}")).addClass("active");                
+            }else{
+                $('#0').addClass("active");
+            }
+        });
+    </script>
+  </body>
+</html>
