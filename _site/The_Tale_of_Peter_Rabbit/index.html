@@ -632,8 +632,14 @@ But Flopsy, Mopsy, and Cotton-tail had bread and milk and blackberries for suppe
                 if(event.direction=="left"){
                     var $nextImage = $('.active.item', this).next('.item').find('img');
                     $nextImage.attr('src', $nextImage.data('src'));
+                    
+                    $nextImage = $('.active.item', this).next('.item').next('.item').find('img');
+                    $nextImage.attr('src', $nextImage.data('src'));
                 }else if(event.direction=="right"){
                     var $nextImage = $('.active.item', this).prev('.item').find('img');
+                    $nextImage.attr('src', $nextImage.data('src'));
+                    
+                    $nextImage = $('.active.item', this).prev('.item').prev('.item').find('img');
                     $nextImage.attr('src', $nextImage.data('src'));
                 }
             })
@@ -641,10 +647,19 @@ But Flopsy, Mopsy, and Cotton-tail had bread and milk and blackberries for suppe
             if (localStorage.The_Tale_of_Peter_Rabbit) {
                 var $startPage= $('#'+localStorage.getItem("The_Tale_of_Peter_Rabbit"));
                 $startPage.find('img').attr('src', $startPage.find('img').data('src'));
-                $startPage.addClass("active");  
+                $startPage.addClass("active");
+                
+                var $nextImage = $('.active.item', this).next('.item').find('img');
+                $nextImage.attr('src', $nextImage.data('src'));
+                
+                $nextImage = $('.active.item', this).prev('.item').find('img');
+                $nextImage.attr('src', $nextImage.data('src'));
             }else{
                 $('#0').find('img').attr('src', $('#0').find('img').data('src'));
                 $('#0').addClass("active");
+                
+                var $nextImage = $('.active.item', this).next('.item').find('img');
+                $nextImage.attr('src', $nextImage.data('src'));
             }
         });
     </script>
