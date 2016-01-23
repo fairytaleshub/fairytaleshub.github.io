@@ -35,7 +35,7 @@
                                             <div id="0" class="item">
                                                 <div>
                                                     <div class="text-center">
-                                                        <img src="{{site.baseurl}}{{ page.permalink}}images/{{page.cover }}" class="cover-image"/>
+                                                        <img data-src="{{site.baseurl}}{{ page.permalink}}images/{{page.cover }}" class="cover-image"/>
                                                     </div>
                                                 </div>    
                                             </div>
@@ -44,7 +44,7 @@
                                             <div id="{{counter}}" class="item">
                                                 <div>
                                                     <div class="text-center">
-                                                        <img src="{{site.baseurl}}{{ page.permalink}}images/{{page.image}}{{counter}}.jpg" class="page-image"/>
+                                                        <img data-src="{{site.baseurl}}{{ page.permalink}}images/{{page.image}}{{counter}}.jpg" class="page-image"/>
                                                     </div>
                                                     <p>
                                                        {{ bookPage | remove: '<p>' | remove: '</p>'}}
@@ -105,11 +105,22 @@
                 if(typeof(Storage) !== "undefined") {
                     localStorage.setItem("{{ page.prefix }}", event.relatedTarget.id);
                 }
+                
+                if(event.direction=="left"){
+                    var $nextImage = $('.active.item', this).next('.item').find('img');
+                    $nextImage.attr('src', $nextImage.data('src'));
+                }else if(event.direction=="right"){
+                    var $nextImage = $('.active.item', this).prev('.item').find('img');
+                    $nextImage.attr('src', $nextImage.data('src'));
+                }
             })
             
             if (localStorage.{{ page.prefix }}) {
-                $('#'+localStorage.getItem("{{ page.prefix }}")).addClass("active");                
+                var $startPage= $('#'+localStorage.getItem("{{ page.prefix }}"));
+                $startPage.find('img').attr('src', $startPage.find('img').data('src'));
+                $startPage.addClass("active");  
             }else{
+                $('#0').find('img').attr('src', $('#0').find('img').data('src'));
                 $('#0').addClass("active");
             }
         });
