@@ -32,32 +32,21 @@
       
 </head>
   <body>
-      <div class="container">
+      <div class="navbar navbar-default navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="row">
+                <div class="col-lg-8">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-book"></span> FairyTalesHub</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+      <div class="container book-container">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        
-                        <!-- panel header -->
-                        
-                        <div class="panel-heading">   
-                            
-                            <span class="header-center">The Tale of Peter Rabbit</span>
-                            <button id="homeBtn" type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-arrow-left text-muted" aria-hidden="true"></span>
-                                    <span class="sr-only">Home</span>
-                            </button>
-                            
-                            <div class="btn-group pull-right" role="group" aria-label="text-size">
-                                <button id="fontMinus" type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-minus text-muted" aria-hidden="true"></span>
-                                    <span class="sr-only">Minus</span>
-                                </button>
-                                <button id="fontPlus" type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-plus text-muted" aria-hidden="true"></span>
-                                    <span class="sr-only">Plus</span>
-                                </button>
-                            </div>
-                        </div>
                         
                         <!-- panel body -->
                         <div class="panel-body">
@@ -607,6 +596,27 @@ But Flopsy, Mopsy, and Cotton-tail had bread and milk and blackberries for suppe
             </div>
           
       </div>
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-md-12">
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -614,23 +624,6 @@ But Flopsy, Mopsy, and Cotton-tail had bread and milk and blackberries for suppe
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $( document ).ready(function() {
-            $("#homeBtn").click(function () {
-                window.location = "/";
-                this.blur();
-            });
-            $("#fontPlus").click(function () {
-                var fontSize = parseInt($('p').css("font-size"));
-                fontSize = fontSize + 1 + "px";
-                $('p').css({'font-size':fontSize});
-                this.blur();
-            });
-            $("#fontMinus").click(function () {
-                var fontSize = parseInt($('p').css("font-size"));
-                fontSize = fontSize - 1 + "px";
-                $('p').css({'font-size':fontSize});
-                this.blur();
-            });
-            
             $('#book').on('slide.bs.carousel', function (event) {
                 if(typeof(Storage) !== "undefined") {
                     localStorage.setItem("The_Tale_of_Peter_Rabbit", event.relatedTarget.id);
